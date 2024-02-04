@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glass-nav {
+	background: rgba(255, 255, 255, 0.75);
+	/* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.image-class {
+	/* width: 100px; */
+	height: 50px;
+	object-fit: contain;
+}
+
+.image-icons {
+	height: 50px;
+	object-fit: contain;
+}
