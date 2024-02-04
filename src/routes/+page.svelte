@@ -1,6 +1,8 @@
 <script lang="ts">
+	import Carousel from '../componets/Carousal.svelte';
 	import '../app.css';
 	let isMenu: boolean = true;
+	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 
 	// $: console.log(isMenu);
 </script>
@@ -124,52 +126,78 @@
 	<!-- Feature Section -->
 	<section>
 		<div
-			class="bg-pink-200 p-4 rounded-xl h-auto flex flex-col items-center justify-center mt-4 mb-4 md:flex-row"
+			class="p-4 rounded-xl h-auto flex flex-col items-center justify-center mt-4 mb-4 md:flex-row"
 		>
 			<div class="flex flex-col mt-4 items-center">
-				<h1 class="font-bold font-rubik text-xl mb-8 md:text-3xl">All Your Needs In One App</h1>
+				<h1 class="font-bold font-rubik text-xl md:text-3xl">All Your Needs In One App</h1>
+				<p>Note App Is More Than Just a Note App</p>
 
-				<div class="flex flex-row gap-2 items-center">
-					<div class="bg-orange-500 rounded-full p-4">
-						<img src="/icons/note.png" alt="" class="image-icons" />
-					</div>
-					<div>
-						<h1 class="font-bold">Notes</h1>
-						<p class="text-sm">Add Notes Like Never Before</p>
-					</div>
-				</div>
+				<div class="flex flex-col gap-4 mt-4 w-full md:grid lg:grid-cols-2 border-black">
+					<img src="features-note.webp" alt="featues note" class="rounded-2xl" />
 
-				<div class="flex flex-row gap-2 items-center text-right">
-					<div>
-						<h1 class="font-bold">Reminder</h1>
-						<p class="text-sm">Don't Miss It. Add It in Reminder.</p>
-					</div>
-					<div class="bg-pink-500 rounded-full p-4">
-						<img src="/icons/reminder.png" alt="" class="image-icons" />
-					</div>
-				</div>
+					<div class="md:grid md:grid-cols-2 md:gap-4">
+						<div class="bg-gray-50 grid grid-cols-2 w-full p-2 rounded-xl gap-4">
+							<div>
+								<div class="bg-blue-500 rounded-lg p-4 h-full items-center flex justify-center">
+									<img src="/icons/note.png" alt="" class="image-icons" />
+								</div>
+							</div>
+							<div>
+								<h1 class="font-bold">Notes</h1>
+								<p class="text-sm">
+									Effortlessly take notes and organize your thoughts with our note app's intuitive
+									and user-friendly interface.
+								</p>
+							</div>
+						</div>
 
-				<div class="flex flex-row gap-2 items-center">
-					<div class="bg-green-500 rounded-full p-4">
-						<img src="/icons/money-bag.png" alt="" class="image-icons" />
-					</div>
-					<div>
-						<h1 class="font-bold">Expense</h1>
-						<p class="text-sm">Track Your Expense Like a Pro</p>
-					</div>
-				</div>
+						<div class="bg-gray-50 grid grid-cols-2 w-full p-2 rounded-xl gap-4 mt-2 md:mt-0">
+							<div>
+								<h1 class="font-bold">Reminder</h1>
+								<p class="text-sm">
+									Never miss a deadline or forget an important task with our note app's reminder
+									feature.
+								</p>
+							</div>
+							<div>
+								<div class="bg-orange-500 rounded-lg p-4 h-full items-center flex justify-center">
+									<img src="/icons/reminder.png" alt="" class="image-icons" />
+								</div>
+							</div>
+						</div>
 
-				<div class="flex flex-row gap-2 items-center text-right">
-					<div>
-						<h1 class="font-bold">Cloud</h1>
-						<p class="text-sm">Never Loose Your Data. Sync with cloud</p>
-					</div>
-					<div class="bg-blue-500 rounded-full p-4">
-						<img src="/icons/message.png" alt="" class="image-icons" />
+						<div class="bg-gray-50 grid grid-cols-2 w-full p-2 rounded-xl gap-4 mt-2 md:mt-0">
+							<div>
+								<div class="bg-green-500 rounded-lg p-4 h-full items-center flex justify-center">
+									<img src="/icons/money-bag.png" alt="" class="image-icons" />
+								</div>
+							</div>
+							<div>
+								<h1 class="font-bold">Expense</h1>
+								<p class="text-sm">
+									Keep track of your expenses effortlessly with our note app's expense tracking
+									feature.
+								</p>
+							</div>
+						</div>
+
+						<div class="bg-gray-50 grid grid-cols-2 w-full p-2 rounded-xl gap-4 mt-2 md:mt-0">
+							<div>
+								<h1 class="font-bold">Cloud</h1>
+								<p class="text-sm">
+									Access your notes and data from anywhere, anytime with our note app's cloud sync
+									feature.
+								</p>
+							</div>
+							<div>
+								<div class="bg-violet-500 rounded-lg p-4 h-full items-center flex justify-center">
+									<img src="/icons/message.png" alt="" class="image-icons" />
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<img src="/feature.webp" alt="hero" class="md:w-1/3" />
 		</div>
 	</section>
 
@@ -178,7 +206,42 @@
 		<div
 			class="bg-green-200 p-4 rounded-xl h-auto flex flex-col items-center justify-center mt-4 mb-8"
 		>
-			Under Maintanence. Stay Tuned!
+			<h1 class="font-bold font-rubik text-xl md:text-3xl">It's Cross Platform Baby !</h1>
+			<p class="text-center">
+				No Matter What Device You're Using NoteApp Can Run On Multiple Devices of Your Choice
+			</p>
+
+			<div class="mt-8 grid lg:grid lg:grid-cols-2">
+				<Carousel autoplay="2000">
+					<div class="bg-white p-2 rounded-2xl flex items-center justify-center">
+						<img src="/logos/react-native-logo.webp" alt="" class="image-class" />
+					</div>
+					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+						<img src="/logos/tauri.svg" alt="" class="image-class" />
+					</div>
+					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+						<img src="/logos/sqlite.png" alt="" class="image-class" />
+					</div>
+					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+						<img src="/logos/nextjs-icon.webp" alt="" class="image-class" />
+					</div>
+					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+						<img src="/logos/planetscale.jpg" alt="" class="image-class" />
+					</div>
+					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+						<img src="/logos/tailwind.png" alt="" class="image-class" />
+					</div>
+					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+						<img src="/logos/rust.png" alt="" class="image-class" />
+					</div>
+					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+						<img src="/logos/svelte.webp" alt="" class="image-class" />
+					</div>
+				</Carousel>
+				<div class="flex items-center justify-center">
+					<img src="/cross-platform.webp" alt="" class="lg:w-96" />
+				</div>
+			</div>
 		</div>
 	</section>
 </main>
