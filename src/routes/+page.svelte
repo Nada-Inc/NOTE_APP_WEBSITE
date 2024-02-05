@@ -132,8 +132,14 @@
 				<h1 class="font-bold font-rubik text-xl md:text-3xl">All Your Needs In One App</h1>
 				<p>Note App Is More Than Just a Note App</p>
 
-				<div class="flex flex-col gap-4 mt-4 w-full md:grid lg:grid-cols-2 border-black">
-					<img src="features-note.webp" alt="featues note" class="rounded-2xl" />
+				<div class="flex flex-col gap-4 mt-4 w-full md:grid lg:grid-cols-2">
+					<div class="flex items-center h-full">
+						<img
+							src="features-note.webp"
+							alt="featues note"
+							class="rounded-2xl h-full object-cover"
+						/>
+					</div>
 
 					<div class="md:grid md:grid-cols-2 md:gap-4">
 						<div class="bg-gray-50 grid grid-cols-2 w-full p-2 rounded-xl gap-4">
@@ -206,13 +212,23 @@
 		<div
 			class="bg-green-200 p-4 rounded-xl h-auto flex flex-col items-center justify-center mt-4 mb-8"
 		>
-			<h1 class="font-bold font-rubik text-xl md:text-3xl">It's Cross Platform Baby !</h1>
-			<p class="text-center">
-				No Matter What Device You're Using NoteApp Can Run On Multiple Devices of Your Choice
-			</p>
+			<div class="lg:grid lg:grid-cols-2">
+				<div class="text-center flex flex-col items-center justify-center lg:items-end">
+					<h1 class="font-bold font-rubik text-xl md:text-3xl">It's Cross Platform</h1>
+					<p class="text-center">
+						No Matter What Device You're Using, NoteApp Can Run On Multiple Devices of Your Choice.
+					</p>
+					<button class="bg-blue-400 p-2 rounded-xl text-white mt-2 hover:bg-blue-600"
+						>Know More</button
+					>
+				</div>
+				<div class="flex items-center justify-center">
+					<img src="/allinone.png" alt="" class="lg:w-96" />/
+				</div>
+			</div>
 
-			<div class="mt-8 grid lg:grid lg:grid-cols-2">
-				<Carousel autoplay="2000">
+			<!-- <div class="mt-8"> -->
+			<!-- <Carousel autoplay="2000">
 					<div class="bg-white p-2 rounded-2xl flex items-center justify-center">
 						<img src="/logos/react-native-logo.webp" alt="" class="image-class" />
 					</div>
@@ -237,11 +253,8 @@
 					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
 						<img src="/logos/svelte.webp" alt="" class="image-class" />
 					</div>
-				</Carousel>
-				<div class="flex items-center justify-center">
-					<img src="/cross-platform.webp" alt="" class="lg:w-96" />
-				</div>
-			</div>
+				</Carousel> -->
+			<!-- </div> -->
 		</div>
 	</section>
 </main>
