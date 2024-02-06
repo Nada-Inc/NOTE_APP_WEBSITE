@@ -264,14 +264,57 @@
 					journey to develop a cutting-edge cross platform app that harnesses the power of React
 					Native and Tauri/Rust to deliver a seamless cross-platform experience.
 				</p>
-				<button class="bg-blue-500 p-2 rounded-xl text-white hover:bg-blue-600 w-full mt-4"
-					>Learn More</button
+				<a
+					href="/case-study"
+					class="bg-blue-500 p-2 rounded-xl text-white hover:bg-blue-600 w-full mt-4 text-center"
+					>Learn More</a
 				>
 			</div>
 		</div>
 	</section>
+
+	<section>
+		<div
+			class="bg-violet-200 p-4 rounded-xl h-auto flex flex-col items-center justify-center md:flex-row mb-4"
+		>
+			<div class="w-full lg:grid lg:grid-cols-2 lg:p-8">
+				<div class="flex items-center justify-center">
+					<img src="/chat.webp" alt="hero" class="md:w-1/2" />
+				</div>
+
+				<div
+					class="flex flex-col items-center justify-center text-center lg:text-left md:items-center w-full"
+				>
+					<h1 class="font-bold font-rubik text-xl md:text-3xl">Send Your Thoughts</h1>
+					<p class="font-rubik">We Love To Hear From You</p>
+					<div class="mt-4 md:items-start w-full">
+						<form action="" class="flex flex-col gap-2">
+							<input
+								type="text"
+								class="rounded-xl p-2 outline-none text-sm w-full"
+								placeholder="Enter Your Name"
+							/>
+							<input
+								type="text"
+								class="rounded-xl p-2 outline-none text-sm w-full"
+								placeholder="Enter Your Email"
+							/>
+							<textarea
+								class="rounded-xl p-2 outline-none text-sm w-full"
+								placeholder="Enter Your Thoughts"
+								rows="5"
+							/>
+							<button class="bg-blue-500 p-2 rounded-xl text-white hover:bg-blue-600 w-full"
+								>Send</button
+							>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </main>
-<footer class="bg-blue-200 text-black">
+<footer class=" text-black">
 	<div class="p-8 grid grid-cols-2 md:grid-cols-none md:flex md:flex-col md:items-center">
 		<ul class="md:flex gap-2">
 			<li>About</li>
