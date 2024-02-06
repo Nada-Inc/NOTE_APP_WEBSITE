@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Carousel from '../componets/Carousal.svelte';
 	import '../app.css';
+
 	let isMenu: boolean = true;
 	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 
@@ -210,51 +211,87 @@
 	<!-- Tech Stack -->
 	<section>
 		<div
-			class="bg-green-200 p-4 rounded-xl h-auto flex flex-col items-center justify-center mt-4 mb-8"
+			class="bg-green-200 p-4 rounded-xl h-auto flex flex-col items-center justify-center mt-4 mb-8 lg:px-64"
 		>
 			<div class="lg:grid lg:grid-cols-2">
 				<div class="text-center flex flex-col items-center justify-center lg:items-end">
 					<h1 class="font-bold font-rubik text-xl md:text-3xl">It's Cross Platform</h1>
-					<p class="text-center">
+					<p class="text-center md:text-right">
 						No Matter What Device You're Using, NoteApp Can Run On Multiple Devices of Your Choice.
 					</p>
-					<button class="bg-blue-400 p-2 rounded-xl text-white mt-2 hover:bg-blue-600"
-						>Know More</button
-					>
 				</div>
 				<div class="flex items-center justify-center">
-					<img src="/allinone.png" alt="" class="lg:w-96" />/
+					<img src="/allinone.png" alt="" class="lg:w-96" />
 				</div>
 			</div>
+		</div>
+	</section>
 
-			<!-- <div class="mt-8"> -->
-			<!-- <Carousel autoplay="2000">
-					<div class="bg-white p-2 rounded-2xl flex items-center justify-center">
-						<img src="/logos/react-native-logo.webp" alt="" class="image-class" />
-					</div>
-					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
-						<img src="/logos/tauri.svg" alt="" class="image-class" />
-					</div>
-					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
-						<img src="/logos/sqlite.png" alt="" class="image-class" />
-					</div>
-					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
-						<img src="/logos/nextjs-icon.webp" alt="" class="image-class" />
-					</div>
-					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
-						<img src="/logos/planetscale.jpg" alt="" class="image-class" />
-					</div>
-					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
-						<img src="/logos/tailwind.png" alt="" class="image-class" />
-					</div>
-					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
-						<img src="/logos/rust.png" alt="" class="image-class" />
-					</div>
-					<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
-						<img src="/logos/svelte.webp" alt="" class="image-class" />
-					</div>
-				</Carousel> -->
-			<!-- </div> -->
+	<section>
+		<div
+			class="p-4 rounded-xl h-auto flex flex-col items-center justify-center mt-4 mb-8 md:grid md:grid-cols-2 lg:px-52"
+		>
+			<Carousel autoplay="2000">
+				<div class="bg-white p-2 rounded-2xl flex items-center justify-center">
+					<img src="/logos/react-native-logo.webp" alt="" class="image-class" />
+				</div>
+				<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+					<img src="/logos/tauri.svg" alt="" class="image-class" />
+				</div>
+				<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+					<img src="/logos/sqlite.png" alt="" class="image-class" />
+				</div>
+				<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+					<img src="/logos/nextjs-icon.webp" alt="" class="image-class" />
+				</div>
+				<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+					<img src="/logos/planetscale.jpg" alt="" class="image-class" />
+				</div>
+				<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+					<img src="/logos/tailwind.png" alt="" class="image-class" />
+				</div>
+				<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+					<img src="/logos/rust.png" alt="" class="image-class" />
+				</div>
+				<div class="bg-white p-2 rounded-2xl flex items-center justify-center mr-2">
+					<img src="/logos/svelte.webp" alt="" class="image-class" />
+				</div>
+			</Carousel>
+			<div class="flex flex-col items-center md:items-start mt-4">
+				<!-- <h1 class="font-bold font-rubik text-xl md:text-3xl">Case Study</h1> -->
+				<p class="text-justify mt-4">
+					Building a cross platform application is always challenging. Our team embarked on a
+					journey to develop a cutting-edge cross platform app that harnesses the power of React
+					Native and Tauri/Rust to deliver a seamless cross-platform experience.
+				</p>
+				<button class="bg-blue-500 p-2 rounded-xl text-white hover:bg-blue-600 w-full mt-4"
+					>Learn More</button
+				>
+			</div>
 		</div>
 	</section>
 </main>
+<footer class="bg-blue-200 text-black">
+	<div class="p-8 grid grid-cols-2 md:grid-cols-none md:flex md:flex-col md:items-center">
+		<ul class="md:flex gap-2">
+			<li>About</li>
+			<li>Company</li>
+			<li>Bug Report</li>
+		</ul>
+		<ul class="flex flex-col items-end md:flex-row md:gap-2">
+			<li class="flex gap-2">
+				Source Code
+				<img src="/github.svg" alt="github logo" />
+			</li>
+			<li class="flex gap-2">
+				Facebook
+				<img src="/fb.svg" alt="github logo" />
+			</li>
+			<li class="flex gap-2">
+				Instagram
+				<img src="/insta.svg" alt="insta logo" />
+			</li>
+		</ul>
+	</div>
+	<div class="text-center p-2 text-sm text-gray-600">All Rights Reserved NADA LABS © 2024</div>
+</footer>

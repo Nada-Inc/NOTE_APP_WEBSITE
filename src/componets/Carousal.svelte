@@ -78,6 +78,7 @@
 	}
 
 	function handleChange(event) {
+		let currentIndex;
 		currentIndex = controller.currentSlide;
 		dispatch('change', {
 			currentSlide: controller.currentSlide,
@@ -101,7 +102,8 @@
 		overflow: hidden;
 		display: flex;
 		height: 100%;
-		background-color: white;
+		z-index: -1;
+		/* background-color: white; */
 		border-radius: 2rem;
 	}
 </style>
