@@ -99,7 +99,7 @@
 					<p class="text-sm">Download Our Cross Platform Note App for All your Needs</p>
 					<div class="flex flex-row gap-2 mt-4">
 						<a
-							href="https://onedrive.live.com/download?resid=77CAE4ED2AE118B8%211319&authkey=!AKX29v99Bgb5h88"
+							href="https://fastupload.io/AQzqEaii86yErgc/file"
 							class="bg-black text-white p-2 text-xs rounded-lg flex flex-row items-center justify-center gap-2"
 						>
 							<img src="/android_logo.png" alt="android logo" width="40px" />
