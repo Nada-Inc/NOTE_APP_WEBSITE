@@ -12,7 +12,7 @@
 		localStorage.setItem('vCount', visitCount.toString());
 	});
 
-	$: showPopup = visitCount === 3;
+	$: showPopup = visitCount % 3 === 0;
 
 	let isMenu: boolean = true;
 
@@ -27,6 +27,10 @@
 			behavior: 'smooth'
 		});
 	}
+
+	const updateState = () => {
+		showPopup = !showPopup;
+	};
 </script>
 
 <nav class="glass-nav border-gray-200 sticky top-0">
@@ -110,7 +114,7 @@
 				<button
 					class="absolute top-4 right-5 bg-red-500 rounded-full text-white h-6 w-6"
 					on:click={() => {
-						showPopup = !showPopup;
+						updateState();
 					}}>x</button
 				>
 				<img src="/welcome-back.webp" alt="" class="object-contain mb-4 lg:w-1/2" />
