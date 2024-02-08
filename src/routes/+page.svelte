@@ -1,6 +1,18 @@
 <script lang="ts">
 	import Carousel from '../componets/Carousal.svelte';
+	import { onMount } from 'svelte';
 	import '../app.css';
+
+	let visitCount = 0;
+	let showPopup = false;
+
+	onMount(() => {
+		const visitCountNumber = parseInt(localStorage.getItem('vCount') || '0');
+		visitCount = visitCountNumber + 1;
+		localStorage.setItem('vCount', visitCount.toString());
+	});
+
+	$: showPopup = visitCount === 3;
 
 	let isMenu: boolean = true;
 
@@ -88,6 +100,30 @@
 </nav>
 
 <main class="px-4">
+	{#if showPopup}
+		<div
+			class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 p-2 lg:p-96 md:p-40"
+		>
+			<div
+				class="bg-yellow-200 p-8 rounded-2xl shadow-md flex flex-col items-center relative justify-center"
+			>
+				<button
+					class="absolute top-4 right-5 bg-red-500 rounded-full text-white h-6 w-6"
+					on:click={() => {
+						showPopup = !showPopup;
+					}}>x</button
+				>
+				<img src="/welcome-back.webp" alt="" class="object-contain mb-4 lg:w-1/2" />
+				<p>Hey, Seems Like You're Not New Here!</p>
+				<p class="text-sm">Enjoying our service? Let Us Know</p>
+				<div class="mt-2 gap-2">
+					<button class="bg-blue-300 p-2 rounded-lg">FeedBack</button>
+					<button>Contribute</button>
+				</div>
+			</div>
+		</div>
+	{/if}
+
 	<!-- Hero Section -->
 	<section>
 		<div
