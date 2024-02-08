@@ -97,9 +97,9 @@
 			<div
 				class="flex flex-col items-center justify-center text-center md:text-left md:items-start"
 			>
-				<h1 class="font-bold font-rubik text-xl md:text-3xl">
+				<div class="font-bold font-rubik text-xl md:text-3xl">
 					Confused with finding an All In One Note App?
-				</h1>
+				</div>
 				<p class="font-rubik">We Got You Covered</p>
 				<div class="mt-4 flex flex-col justify-center items-center md:items-start">
 					<p class="text-sm">Download Our Cross Platform Note App for All your Needs</p>
@@ -136,7 +136,7 @@
 			class="p-4 rounded-xl h-auto flex flex-col items-center justify-center mt-4 mb-4 md:flex-row"
 		>
 			<div class="flex flex-col mt-4 items-center">
-				<h1 class="font-bold font-rubik text-xl md:text-3xl">All Your Needs In One App</h1>
+				<div class="font-bold font-rubik text-xl md:text-3xl">All Your Needs In One App</div>
 				<p>Note App Is More Than Just a Note App</p>
 
 				<div class="flex flex-col gap-4 mt-4 w-full md:grid lg:grid-cols-2">
@@ -156,7 +156,7 @@
 								</div>
 							</div>
 							<div>
-								<h1 class="font-bold">Notes</h1>
+								<div class="font-bold">Notes</div>
 								<p class="text-sm">
 									Effortlessly take notes and organize your thoughts with our note app's intuitive
 									and user-friendly interface.
@@ -166,7 +166,7 @@
 
 						<div class="bg-gray-50 grid grid-cols-2 w-full p-2 rounded-xl gap-4 mt-2 md:mt-0">
 							<div>
-								<h1 class="font-bold">Reminder</h1>
+								<div class="font-bold">Reminder</div>
 								<p class="text-sm">
 									Never miss a deadline or forget an important task with our note app's reminder
 									feature.
@@ -186,7 +186,7 @@
 								</div>
 							</div>
 							<div>
-								<h1 class="font-bold">Expense</h1>
+								<div class="font-bold">Expense</div>
 								<p class="text-sm">
 									Keep track of your expenses effortlessly with our note app's expense tracking
 									feature.
@@ -196,7 +196,7 @@
 
 						<div class="bg-gray-50 grid grid-cols-2 w-full p-2 rounded-xl gap-4 mt-2 md:mt-0">
 							<div>
-								<h1 class="font-bold">Cloud</h1>
+								<div class="font-bold">Cloud</div>
 								<p class="text-sm">
 									Access your notes and data from anywhere, anytime with our note app's cloud sync
 									feature.
@@ -221,7 +221,7 @@
 		>
 			<div class="lg:grid lg:grid-cols-2">
 				<div class="text-center flex flex-col items-center justify-center lg:items-end">
-					<h1 class="font-bold font-rubik text-xl md:text-3xl">It's Cross Platform</h1>
+					<div class="font-bold font-rubik text-xl md:text-3xl">It's Cross Platform</div>
 					<p class="text-center md:text-right">
 						No Matter What Device You're Using, NoteApp Can Run On Multiple Devices of Your Choice.
 					</p>
@@ -264,7 +264,7 @@
 				</div>
 			</Carousel>
 			<div class="flex flex-col items-center md:items-start mt-4">
-				<!-- <h1 class="font-bold font-rubik text-xl md:text-3xl">Case Study</h1> -->
+				<!-- <div class="font-bold font-rubik text-xl md:text-3xl">Case Study</div> -->
 				<p class="text-justify mt-4">
 					Building a cross platform application is always challenging. Our team embarked on a
 					journey to develop a cutting-edge cross platform app that harnesses the power of React
@@ -291,7 +291,7 @@
 				<div
 					class="flex flex-col items-center justify-center text-center lg:text-left md:items-center w-full"
 				>
-					<h1 class="font-bold font-rubik text-xl md:text-3xl">Send Your Thoughts</h1>
+					<div class="font-bold font-rubik text-xl md:text-3xl">Send Your Thoughts</div>
 					<p class="font-rubik">We Love To Hear From You</p>
 					<div class="mt-4 md:items-start w-full">
 						<form action="" class="flex flex-col gap-2">
