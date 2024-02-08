@@ -1,8 +1,5 @@
 <script lang="ts">
 	import '../../app.css';
-
-	let isMenu: boolean = true;
-	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 </script>
 
 <nav class="glass-nav border-gray-200 sticky top-0">
