@@ -12,7 +12,11 @@
 		localStorage.setItem('vCount', visitCount.toString());
 	});
 
-	$: showPopup = visitCount % 3 === 0;
+	const min = 3;
+	const max = 20;
+	const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+
+	$: showPopup = visitCount === randomNum;
 
 	let isMenu: boolean = true;
 
