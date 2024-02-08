@@ -3,9 +3,18 @@
 	import '../app.css';
 
 	let isMenu: boolean = true;
-	let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 
-	// $: console.log(isMenu);
+	function handleAnchorClick(event: any) {
+		event.preventDefault();
+		isMenu = !isMenu;
+		const link = event.currentTarget;
+		const anchorId = new URL(link.href).hash.replace('#', '');
+		const anchor: any = document.getElementById(anchorId);
+		window.scrollTo({
+			top: anchor.offsetTop,
+			behavior: 'smooth'
+		});
+	}
 </script>
 
 <nav class="glass-nav border-gray-200 sticky top-0">
@@ -43,35 +52,32 @@
 			<ul class="font-medium flex flex-col p-4 md:flex-row md:p-0 md:space-x-8">
 				<li>
 					<a
-						href="#"
+						on:click={() => handleAnchorClick}
+						href="/"
 						class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
 						aria-current="page">Home</a
 					>
 				</li>
 				<li>
 					<a
-						href="#"
+						on:click={() => handleAnchorClick}
+						href="#about"
 						class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
 						>About</a
 					>
 				</li>
 				<li>
 					<a
-						href="#"
+						on:click={() => (isMenu = !isMenu)}
+						href="#combatibility"
 						class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ]"
-						>Services</a
+						>Compatibility</a
 					>
 				</li>
 				<li>
 					<a
-						href="#"
-						class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-						>Pricing</a
-					>
-				</li>
-				<li>
-					<a
-						href="#"
+						on:click={() => (isMenu = !isMenu)}
+						href="#contact"
 						class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
 						>Contact</a
 					>
@@ -99,7 +105,7 @@
 					<p class="text-sm">Download Our Cross Platform Note App for All your Needs</p>
 					<div class="flex flex-row gap-2 mt-4">
 						<a
-							href="https://onedrive.live.com/download?resid=77CAE4ED2AE118B8%211319&authkey=!AKX29v99Bgb5h88"
+							href="https://fastupload.io/AQzqEaii86yErgc/file"
 							class="bg-black text-white p-2 text-xs rounded-lg flex flex-row items-center justify-center gap-2"
 						>
 							<img src="/android_logo.png" alt="android logo" width="40px" />
@@ -125,7 +131,7 @@
 	</section>
 
 	<!-- Feature Section -->
-	<section>
+	<section id="about">
 		<div
 			class="p-4 rounded-xl h-auto flex flex-col items-center justify-center mt-4 mb-4 md:flex-row"
 		>
@@ -209,7 +215,7 @@
 	</section>
 
 	<!-- Tech Stack -->
-	<section>
+	<section id="combatibility">
 		<div
 			class="bg-green-200 p-4 rounded-xl h-auto flex flex-col items-center justify-center mt-4 mb-8 lg:px-64"
 		>
@@ -273,7 +279,7 @@
 		</div>
 	</section>
 
-	<section>
+	<section id="contact">
 		<div
 			class="bg-violet-200 p-4 rounded-xl h-auto flex flex-col items-center justify-center md:flex-row mb-4"
 		>
@@ -304,6 +310,11 @@
 								placeholder="Enter Your Thoughts"
 								rows="5"
 							/>
+							<div
+								class="cf-turnstile"
+								data-sitekey="0x4AAAAAAAReL0DBgTwt86Y-"
+								data-theme="light"
+							></div>
 							<button class="bg-blue-500 p-2 rounded-xl text-white hover:bg-blue-600 w-full"
 								>Send</button
 							>
