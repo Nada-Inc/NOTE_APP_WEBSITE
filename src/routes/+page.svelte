@@ -8,15 +8,20 @@
 
 	onMount(() => {
 		const visitCountNumber = parseInt(localStorage.getItem('vCount') || '0');
-		visitCount = visitCountNumber + 1;
+		const lastVisitTime = parseInt(localStorage.getItem('lastVisitTime') || '0');
+		const expirationTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+		if (new Date().getTime() - lastVisitTime > expirationTime) {
+			visitCount = 1;
+			localStorage.setItem('lastVisitTime', new Date().getTime().toString());
+		} else {
+			visitCount = visitCountNumber + 1;
+		}
+
 		localStorage.setItem('vCount', visitCount.toString());
 	});
 
-	const min = 3;
-	const max = 20;
-	const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-
-	$: showPopup = visitCount === randomNum;
+	$: showPopup = visitCount === 2 || visitCount === 6 || visitCount === 12;
 
 	let isMenu: boolean = true;
 
@@ -80,7 +85,7 @@
 				</li>
 				<li>
 					<a
-						on:click={() => handleAnchorClick}
+						on:click={() => (isMenu = !isMenu)}
 						href="#about"
 						class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
 						>About</a
@@ -100,6 +105,14 @@
 						href="#contact"
 						class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
 						>Contact</a
+					>
+				</li>
+				<li>
+					<a
+						on:click={() => (isMenu = !isMenu)}
+						href="/auth/login"
+						class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+						>Login</a
 					>
 				</li>
 			</ul>
