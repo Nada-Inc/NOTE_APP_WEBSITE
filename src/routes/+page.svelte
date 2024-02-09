@@ -1,10 +1,23 @@
 <script lang="ts">
+	// @ts-nocheck
 	import Carousel from '../componets/Carousal.svelte';
 	import { onMount } from 'svelte';
 	import '../app.css';
+	import Toast from '../componets/Toast.svelte';
+	import { writable } from 'svelte/store';
+	import { flip } from 'svelte/animate';
+
+	let toast = writable(null);
+
+	let name = '';
+	let email = '';
+
+	let apiKey = import.meta.env.VITE_API_KEY;
 
 	let visitCount = 0;
 	let showPopup = false;
+
+	let showLoading = false;
 
 	onMount(() => {
 		const visitCountNumber = parseInt(localStorage.getItem('vCount') || '0');
@@ -40,8 +53,38 @@
 	const updateState = () => {
 		showPopup = !showPopup;
 	};
+
+	const handleSubmit = async (event: any) => {
+		showLoading = true;
+		event.preventDefault();
+		if (name === '' || email === '') {
+			alert(123);
+			return;
+		}
+		try {
+			const response = await fetch(`${apiKey}/submit-form`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ name, email })
+			});
+			if (response.ok) {
+				toast.set({ message: 'Thanks For Your Feedback', type: 'success' });
+				setTimeout(() => toast.set(null), 3000);
+				name = '';
+				email = '';
+			}
+		} catch (error) {
+			toast.set({ message: `Oops!! Error Occured. Check Your Email Address`, type: 'error' });
+			setTimeout(() => toast.set(null), 3000);
+		} finally {
+			showLoading = false;
+		}
+	};
 </script>
 
+<Toast bind:toastMessage={toast} />
 <nav class="glass-nav border-gray-200 sticky top-0">
 	<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -141,6 +184,20 @@
 					<button class="bg-blue-300 p-2 rounded-lg">FeedBack</button>
 					<button>Contribute</button>
 				</div>
+			</div>
+		</div>
+	{/if}
+
+	{#if showLoading}
+		<div
+			class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 p-2 lg:p-96 md:p-40"
+			style="background-color: rgba(0, 0, 0, 0.3);"
+		>
+			<div
+				class="bg-white p-2 rounded-2xl shadow-md flex flex-row items-center relative justify-center"
+			>
+				<img src="/radio.svg" alt="loading" class="w-8" />
+				Sending Feedback. Please Wait...
 			</div>
 		</div>
 	{/if}
@@ -351,16 +408,18 @@
 					<div class="font-bold font-rubik text-xl md:text-3xl">Send Your Thoughts</div>
 					<p class="font-rubik">We Love To Hear From You</p>
 					<div class="mt-4 md:items-start w-full">
-						<form action="" class="flex flex-col gap-2">
+						<form action="" class="flex flex-col gap-2" on:submit={handleSubmit}>
 							<input
 								type="text"
 								class="rounded-xl p-2 outline-none text-sm w-full"
 								placeholder="Enter Your Name"
+								bind:value={name}
 							/>
 							<input
 								type="text"
 								class="rounded-xl p-2 outline-none text-sm w-full"
 								placeholder="Enter Your Email"
+								bind:value={email}
 							/>
 							<textarea
 								class="rounded-xl p-2 outline-none text-sm w-full"
@@ -372,8 +431,9 @@
 								data-sitekey="0x4AAAAAAAReL0DBgTwt86Y-"
 								data-theme="light"
 							></div>
-							<button class="bg-blue-500 p-2 rounded-xl text-white hover:bg-blue-600 w-full"
-								>Send</button
+							<button
+								class="bg-blue-500 p-2 rounded-xl text-white hover:bg-blue-600 w-full"
+								type="submit">Send</button
 							>
 						</form>
 					</div>
