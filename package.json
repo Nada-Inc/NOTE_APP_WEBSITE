@@ -36,6 +36,7 @@
 	"dependencies": {
 		"siema": "^1.5.1",
 		"svelte-carousel": "^1.0.25",
-		"svelte-icons": "^2.1.0"
+		"svelte-icons": "^2.1.0",
+		"svelte-toast": "^1.0.0"
 	}
 }
