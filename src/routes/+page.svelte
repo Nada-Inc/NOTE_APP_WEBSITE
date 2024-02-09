@@ -5,19 +5,15 @@
 	import '../app.css';
 	import Toast from '../componets/Toast.svelte';
 	import { writable } from 'svelte/store';
-	import { flip } from 'svelte/animate';
 
 	let toast = writable(null);
-
 	let name = '';
 	let email = '';
-
 	let apiKey = import.meta.env.VITE_API_KEY;
-
 	let visitCount = 0;
 	let showPopup = false;
-
 	let showLoading = false;
+	let isMenu: boolean = true;
 
 	onMount(() => {
 		const visitCountNumber = parseInt(localStorage.getItem('vCount') || '0');
@@ -36,8 +32,6 @@
 
 	$: showPopup = visitCount === 2 || visitCount === 6 || visitCount === 12;
 
-	let isMenu: boolean = true;
-
 	function handleAnchorClick(event: any) {
 		event.preventDefault();
 		isMenu = !isMenu;
@@ -55,31 +49,33 @@
 	};
 
 	const handleSubmit = async (event: any) => {
-		showLoading = true;
 		event.preventDefault();
 		if (name === '' || email === '') {
-			alert(123);
-			return;
-		}
-		try {
-			const response = await fetch(`${apiKey}/submit-form`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({ name, email })
-			});
-			if (response.ok) {
-				toast.set({ message: 'Thanks For Your Feedback', type: 'success' });
-				setTimeout(() => toast.set(null), 3000);
-				name = '';
-				email = '';
-			}
-		} catch (error) {
-			toast.set({ message: `Oops!! Error Occured. Check Your Email Address`, type: 'error' });
+			toast.set({ message: 'Email or Name is Missing', type: 'error' });
 			setTimeout(() => toast.set(null), 3000);
-		} finally {
-			showLoading = false;
+			return;
+		} else {
+			showLoading = true;
+			try {
+				const response = await fetch(`${apiKey}/submit-form`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ name, email })
+				});
+				if (response.ok) {
+					toast.set({ message: 'Thanks For Your Feedback', type: 'success' });
+					setTimeout(() => toast.set(null), 3000);
+					name = '';
+					email = '';
+				}
+			} catch (error) {
+				toast.set({ message: `Oops!! Error Occured. Check Your Email Address`, type: 'error' });
+				setTimeout(() => toast.set(null), 3000);
+			} finally {
+				showLoading = false;
+			}
 		}
 	};
 </script>
