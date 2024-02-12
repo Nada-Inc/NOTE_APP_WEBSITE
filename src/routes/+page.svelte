@@ -24,8 +24,10 @@
 
 		let userDetails = JSON.parse(localStorage.getItem('user'));
 
-		isLoggedIn = userDetails.isLoggedIn;
-		userName = userDetails.userName;
+		if (userDetails) {
+			isLoggedIn = userDetails.isLoggedIn;
+			userName = userDetails.userName;
+		}
 
 		if (new Date().getTime() - lastVisitTime > expirationTime) {
 			visitCount = 1;
