@@ -14,11 +14,18 @@
 	let showPopup = false;
 	let showLoading = false;
 	let isMenu: boolean = true;
+	let isLoggedIn = false;
+	let userName = '';
 
 	onMount(() => {
 		const visitCountNumber = parseInt(localStorage.getItem('vCount') || '0');
 		const lastVisitTime = parseInt(localStorage.getItem('lastVisitTime') || '0');
 		const expirationTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+		let userDetails = JSON.parse(localStorage.getItem('user'));
+
+		isLoggedIn = userDetails.isLoggedIn;
+		userName = userDetails.userName;
 
 		if (new Date().getTime() - lastVisitTime > expirationTime) {
 			visitCount = 1;
@@ -30,7 +37,7 @@
 		localStorage.setItem('vCount', visitCount.toString());
 	});
 
-	$: showPopup = visitCount === 2 || visitCount === 6 || visitCount === 12;
+	$: showPopup = visitCount === 4 || visitCount === 8 || visitCount === 12 || visitCount === 20;
 
 	function handleAnchorClick(event: any) {
 		event.preventDefault();
@@ -81,6 +88,7 @@
 </script>
 
 <Toast bind:toastMessage={toast} />
+
 <nav class="glass-nav border-gray-200 sticky top-0">
 	<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -147,12 +155,20 @@
 					>
 				</li>
 				<li>
-					<a
-						on:click={() => (isMenu = !isMenu)}
-						href="/auth/login"
-						class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-						>Login</a
-					>
+					{#if isLoggedIn}
+						<a
+							href="/account"
+							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							>Hey, {userName}</a
+						>
+					{:else}
+						<a
+							on:click={() => (isMenu = !isMenu)}
+							href="/auth/login"
+							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							>Login</a
+						>
+					{/if}
 				</li>
 			</ul>
 		</div>
@@ -190,7 +206,7 @@
 			style="background-color: rgba(0, 0, 0, 0.3);"
 		>
 			<div
-				class="bg-white p-2 rounded-2xl shadow-md flex flex-row items-center relative justify-center"
+				class="glass-nav p-2 rounded-2xl shadow-md flex flex-row items-center relative justify-center"
 			>
 				<img src="/radio.svg" alt="loading" class="w-8" />
 				Sending Feedback. Please Wait...
