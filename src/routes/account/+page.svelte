@@ -1,14 +1,51 @@
 <script>
 	import { onMount } from 'svelte';
+	import { supabase } from '$lib/supabase';
+
+	let urlAndroid = '';
+	let urlWindow = '';
+
+	const updateUrl = async () => {
+		try {
+			await supabase
+				.from('tbl.urllinks')
+				.update({
+					url: urlAndroid
+				})
+				.eq('url_type', 'android')
+				.then(() => {
+					console.log('Android URL updated successfully');
+				});
+
+			await supabase
+				.from('tbl.urllinks')
+				.update({
+					url: urlWindow
+				})
+				.eq('url_type', 'windows')
+				.then(() => {
+					console.log('Windows URL updated successfully');
+				});
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	let isLoggedIn = false;
 	let userName = '';
+	let isAdmin = false;
+	let admin = import.meta.env.VITE_NOTE_WEB_ADMIN;
+	let showEditUrl = false;
 
 	onMount(() => {
 		let userDetails = JSON.parse(localStorage.getItem('user') || '{}');
+
 		if (userDetails) {
 			isLoggedIn = userDetails.isLoggedIn;
 			userName = userDetails.userName;
+			if (userDetails.userId === admin) {
+				isAdmin = true;
+			}
 		}
 	});
 
@@ -41,6 +78,40 @@
 
 		<div class="mt-8 bg-gray-50 p-4 rounded-lg">
 			<ul class="flex flex-col gap-2">
+				{#if isAdmin}
+					<li>
+						<button
+							on:click={() => {
+								showEditUrl = true;
+							}}>Url Link Update</button
+						>
+					</li>
+				{/if}
+				{#if showEditUrl}
+					<div>
+						<form action="" class="flex flex-col items-end" on:submit={updateUrl}>
+							<input
+								type="text"
+								name=""
+								id="url_android"
+								placeholder="Add Android Url Here."
+								class="p-2 rounded-lg w-full"
+								bind:value={urlAndroid}
+							/>
+							<input
+								type="text"
+								name=""
+								id="url_windows"
+								placeholder="Add Windows Url Here."
+								class="p-2 rounded-lg w-full mt-2"
+								bind:value={urlWindow}
+							/>
+							<button class="bg-blue-500 p-2 rounded-xl text-white mt-2" type="submit"
+								>Submit</button
+							>
+						</form>
+					</div>
+				{/if}
 				<li>Account Settings</li>
 				<li>Privacy Settings</li>
 				<li class="text-red-500">

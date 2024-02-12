@@ -5,6 +5,7 @@
 	import '../app.css';
 	import Toast from '../componets/Toast.svelte';
 	import { writable } from 'svelte/store';
+	import { supabase } from '$lib/supabase';
 
 	let toast = writable(null);
 	let name = '';
@@ -16,6 +17,36 @@
 	let isMenu: boolean = true;
 	let isLoggedIn = false;
 	let userName = '';
+	let url = null;
+
+	const fetchUrl = async (type) => {
+		try {
+			let { data, error } = await supabase.from('tbl.urllinks').select('*');
+			if (error) throw error;
+			data?.map((item) => {
+				if (item.url_type === type) {
+					url = item.url;
+				}
+			});
+
+			return url;
+		} catch (error) {
+			if (error instanceof Error) {
+				alert(error.message);
+			}
+		}
+	};
+
+	const downloadFile = (type) => {
+		fetchUrl(type).then(() => {
+			if (url) {
+				const link = document.createElement('a');
+				link.href = url;
+				link.download = 'noteapp';
+				link.click();
+			}
+		});
+	};
 
 	onMount(() => {
 		const visitCountNumber = parseInt(localStorage.getItem('vCount') || '0');
@@ -232,8 +263,10 @@
 				<div class="mt-4 flex flex-col justify-center items-center md:items-start">
 					<p class="text-sm">Download Our Cross Platform Note App for All your Needs</p>
 					<div class="flex flex-row gap-2 mt-4">
-						<a
-							href="https://fastupload.io/AQzqEaii86yErgc/file"
+						<button
+							on:click={() => {
+								downloadFile('android');
+							}}
 							class="bg-black text-white p-2 text-xs rounded-lg flex flex-row items-center justify-center gap-2"
 						>
 							<img src="/android_logo.png" alt="android logo" width="40px" />
@@ -241,7 +274,7 @@
 								<h3 class="text-gray-400">Download For</h3>
 								<h2>Android Apk</h2>
 							</div>
-						</a>
+						</button>
 						<a
 							href="https://onedrive.live.com/download?resid=77CAE4ED2AE118B8%211318&authkey=!AC6vgG0PGrDNg_A"
 							class="bg-black text-white p-2 text-xs rounded-lg flex flex-row items-center justify-center gap-2"
