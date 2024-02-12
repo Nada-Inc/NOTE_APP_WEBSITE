@@ -1,7 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	// @ts-ignore
-	import { goto } from '$app/navigation';
 
 	let isLoggedIn = false;
 	let userName = '';
@@ -46,7 +44,9 @@
 				<li>Account Settings</li>
 				<li>Privacy Settings</li>
 				<li class="text-red-500">
-					<a href="/" data-sveltekit-reload><button on:click={handleLogout}>Logout</button></a>
+					<a href="/account" data-sveltekit-reload
+						><button on:click={handleLogout}>Logout</button></a
+					>
 				</li>
 			</ul>
 		</div>
