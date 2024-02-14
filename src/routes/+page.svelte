@@ -18,6 +18,8 @@
 	let isLoggedIn = false;
 	let userName = '';
 	let url = null;
+	let isAdmin = false;
+	let admin = import.meta.env.VITE_NOTE_WEB_ADMIN;
 
 	const fetchUrl = async (type) => {
 		try {
@@ -58,6 +60,9 @@
 		if (userDetails) {
 			isLoggedIn = userDetails.isLoggedIn;
 			userName = userDetails.userName;
+			if (userDetails.userId === admin) {
+				isAdmin = true;
+			}
 		}
 
 		if (new Date().getTime() - lastVisitTime > expirationTime) {
@@ -200,6 +205,14 @@
 							href="/auth/login"
 							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
 							>Login</a
+						>
+					{/if}
+					{#if isAdmin}
+						<a
+							on:click={() => (isMenu = !isMenu)}
+							href="/blog/createblog"
+							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+							>Write Blog</a
 						>
 					{/if}
 				</li>
