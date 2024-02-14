@@ -1,33 +1,50 @@
 <script>
+	// @ts-nocheck
+
 	import { onMount } from 'svelte';
 	import { supabase } from '$lib/supabase';
+	import Toast from '../../componets/Toast.svelte';
+	import { writable } from 'svelte/store';
 
 	let urlAndroid = '';
 	let urlWindow = '';
+	let toast = writable(null);
+	let isLoading = false;
 
 	const updateUrl = async () => {
 		try {
-			await supabase
-				.from('tbl.urllinks')
-				.update({
-					url: urlAndroid
-				})
-				.eq('url_type', 'android')
-				.then(() => {
-					console.log('Android URL updated successfully');
-				});
+			isLoading = true;
+			if (urlAndroid.trim() !== '') {
+				await supabase
+					.from('tbl.urllinks')
+					.update({
+						url: urlAndroid
+					})
+					.eq('url_type', 'android')
+					.then(() => {
+						toast.set({ message: 'Android URL Updated Successfully', type: 'success' });
+						setTimeout(() => toast.set(null), 3000);
+						urlAndroid = '';
+					});
+			}
 
-			await supabase
-				.from('tbl.urllinks')
-				.update({
-					url: urlWindow
-				})
-				.eq('url_type', 'windows')
-				.then(() => {
-					console.log('Windows URL updated successfully');
-				});
+			if (urlWindow.trim() !== '') {
+				await supabase
+					.from('tbl.urllinks')
+					.update({
+						url: urlWindow
+					})
+					.eq('url_type', 'windows')
+					.then(() => {
+						toast.set({ message: 'Windows URL Updated Successfully', type: 'success' });
+						setTimeout(() => toast.set(null), 3000);
+						urlWindow = '';
+					});
+			}
 		} catch (error) {
 			console.error(error);
+		} finally {
+			isLoading = false;
 		}
 	};
 
@@ -54,6 +71,20 @@
 	};
 </script>
 
+<Toast bind:toastMessage={toast} />
+{#if isLoading}
+	<div
+		class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 p-2 lg:p-96 md:p-40"
+		style="background-color: rgba(0, 0, 0, 0.3);"
+	>
+		<div
+			class="glass-nav p-2 rounded-2xl shadow-md flex flex-row items-center relative justify-center"
+		>
+			<img src="/radio.svg" alt="loading" class="w-8" />
+			Updating URL. Please Wait...
+		</div>
+	</div>
+{/if}
 <nav class="glass-nav border-gray-200 sticky top-0 z-40">
 	<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -82,7 +113,7 @@
 					<li>
 						<button
 							on:click={() => {
-								showEditUrl = true;
+								showEditUrl = !showEditUrl;
 							}}>Url Link Update</button
 						>
 					</li>
