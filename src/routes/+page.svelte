@@ -275,8 +275,10 @@
 								<h2>Android Apk</h2>
 							</div>
 						</button>
-						<a
-							href="https://onedrive.live.com/download?resid=77CAE4ED2AE118B8%211318&authkey=!AC6vgG0PGrDNg_A"
+						<button
+							on:click={() => {
+								downloadFile('windows');
+							}}
 							class="bg-black text-white p-2 text-xs rounded-lg flex flex-row items-center justify-center gap-2"
 						>
 							<img src="/windows_logo.png" alt="android logo" width="25px" />
@@ -284,7 +286,7 @@
 								<h3 class="text-gray-400">Download For</h3>
 								<h2>Windows</h2>
 							</div>
-						</a>
+						</button>
 					</div>
 				</div>
 			</div>
