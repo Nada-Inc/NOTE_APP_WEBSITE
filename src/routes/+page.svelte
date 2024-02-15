@@ -6,6 +6,7 @@
 	import Toast from '../componets/Toast.svelte';
 	import { writable } from 'svelte/store';
 	import { supabase } from '$lib/supabase';
+	import { getBlogs } from './blog/setters';
 
 	let toast = writable(null);
 	let name = '';
@@ -20,6 +21,7 @@
 	let url = null;
 	let isAdmin = false;
 	let admin = import.meta.env.VITE_NOTE_WEB_ADMIN;
+	let blogs: any = [];
 
 	const fetchUrl = async (type) => {
 		try {
@@ -50,7 +52,7 @@
 		});
 	};
 
-	onMount(() => {
+	onMount(async () => {
 		const visitCountNumber = parseInt(localStorage.getItem('vCount') || '0');
 		const lastVisitTime = parseInt(localStorage.getItem('lastVisitTime') || '0');
 		const expirationTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
@@ -73,6 +75,13 @@
 		}
 
 		localStorage.setItem('vCount', visitCount.toString());
+
+		try {
+			const fetchedBlogs = await getBlogs();
+			blogs = fetchedBlogs;
+		} catch (error) {
+			console.log(error);
+		}
 	});
 
 	$: showPopup = visitCount === 4 || visitCount === 8 || visitCount === 12 || visitCount === 20;
@@ -123,6 +132,18 @@
 			}
 		}
 	};
+
+	function getFirstImage(html) {
+		const div = document.createElement('div');
+		div.innerHTML = html;
+		const img = div.querySelector('img');
+		if (img) {
+			img.classList.add('object-contain', 'h-32'); // Add Tailwind CSS classes here
+			return img.outerHTML;
+		}
+		// Return a default image if no image is found
+		// return '<img src="path/to/default/image.jpg" class="w-64 h-64 object-cover">';
+	}
 </script>
 
 <Toast bind:toastMessage={toast} />
@@ -207,6 +228,8 @@
 							>Login</a
 						>
 					{/if}
+				</li>
+				<li>
 					{#if isAdmin}
 						<a
 							on:click={() => (isMenu = !isMenu)}
@@ -503,7 +526,24 @@
 			</div>
 		</div>
 	</section>
+
+	<section class="mb-8">
+		<div class="font-bold mb-4">Blogs</div>
+
+		<div class="slides">
+			{#each blogs as item (item.id)}
+				<a href={`/blog/${item.id}`} class="grid grid-cols-1 p-2 mr-2 bg-blue-200 cursor-pointer">
+					<div class="bg-white rounded-lg">
+						{@html getFirstImage(item.content)}
+					</div>
+					<div class="text-sm mt-2">{item.title}</div>
+					<div class="text-sm text-gray-400">{item.created_at.slice(0, 10)}</div>
+				</a>
+			{/each}
+		</div>
+	</section>
 </main>
+
 <footer class=" text-black">
 	<div class="p-8 grid grid-cols-2 md:grid-cols-none md:flex md:flex-col md:items-center">
 		<ul class="md:flex gap-2">
@@ -528,3 +568,35 @@
 	</div>
 	<div class="text-center p-2 text-sm text-gray-600">All Rights Reserved NADA LABS © 2024</div>
 </footer>
+
+<style>
+	.slides {
+		display: flex;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		-webkit-overflow-scrolling: touch;
+	}
+	.slides::-webkit-scrollbar {
+		display: none;
+	}
+	.slides::-webkit-scrollbar-thumb {
+		background: black;
+		border-radius: 10px;
+	}
+	.slides::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.slides > a {
+		scroll-snap-align: start;
+		flex-shrink: 0;
+		width: 250px;
+		height: 250px;
+		border-radius: 1rem;
+		/* background: #eee; */
+		transform-origin: center center;
+		transform: scale(1);
+		transition: transform 0.5s;
+		position: relative;
+	}
+</style>

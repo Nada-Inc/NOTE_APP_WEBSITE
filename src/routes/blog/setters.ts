@@ -36,3 +36,17 @@ export const getBlogs = async () => {
 		console.error(error);
 	}
 };
+
+export const getBlogById = async (id) => {
+	try {
+		let { data, error } = await supabase.from('tbl.blogs').select('*').eq('id', id).single();
+		if (error) {
+			console.error(error);
+			return { success: false, message: 'failed', error };
+		} else {
+			return data;
+		}
+	} catch (error) {
+		console.error('Error fetching blog:', error);
+	}
+};
