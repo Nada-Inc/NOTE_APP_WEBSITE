@@ -167,53 +167,51 @@
 	</div>
 {/if}
 
-{#if isAdmin}
-	<section class="px-4 md:px-12 lg:px-96">
-		{#if showPreview}
-			<Preview bind:blogBody />
+<section class="px-4 md:px-12 lg:px-96" style={isAdmin ? '' : 'display:none'}>
+	{#if showPreview}
+		<Preview bind:blogBody />
+	{/if}
+	<div style={showPreview ? 'display:none;' : ''}>
+		<div class="w-full flex gap-1 justify-between">
+			<input
+				type="text"
+				placeholder="Add a Blog Title"
+				class="bg-gray-100 p-1 rounded-lg outline-none border-none w-1/2"
+				bind:value={title}
+				on:input={() => {
+					titleError = false;
+				}}
+			/>
+			<div>
+				<button class="bg-blue-500 text-white p-1 rounded-lg text-sm" on:click={preview}
+					>Preview</button
+				>
+				<button class="bg-blue-500 text-white p-1 rounded-lg text-sm">Draft</button>
+				<button class="bg-blue-500 text-white p-1 rounded-lg text-sm" on:click={publish}
+					>Publish</button
+				>
+			</div>
+		</div>
+
+		{#if titleError}
+			<span class="text-sm text-red-500">*Blog Title Is Missing</span>
 		{/if}
-		<div style={showPreview ? 'display:none;' : ''}>
-			<div class="w-full flex gap-1 justify-between">
-				<input
-					type="text"
-					placeholder="Add a Blog Title"
-					class="bg-gray-100 p-1 rounded-lg outline-none border-none w-1/2"
-					bind:value={title}
-					on:input={() => {
-						titleError = false;
-					}}
-				/>
-				<div>
-					<button class="bg-blue-500 text-white p-1 rounded-lg text-sm" on:click={preview}
-						>Preview</button
-					>
-					<button class="bg-blue-500 text-white p-1 rounded-lg text-sm">Draft</button>
-					<button class="bg-blue-500 text-white p-1 rounded-lg text-sm" on:click={publish}
-						>Publish</button
-					>
-				</div>
-			</div>
 
-			{#if titleError}
-				<span class="text-sm text-red-500">*Blog Title Is Missing</span>
-			{/if}
+		<div class="editor-wrapper h-[75vh] mt-2">
+			<div bind:this={editor} />
+		</div>
+	</div>
+</section>
 
-			<div class="editor-wrapper h-[75vh] mt-2">
-				<div bind:this={editor} />
-			</div>
+<section class="px-4 md:px-12 lg:px-96" style={isAdmin ? 'display:none' : ''}>
+	<div class="flex flex-col items-center">
+		<img src="/404-custom.webp" alt="404 error" class="md:w-1/2" />
+		<div class="text-center text-gray-400">
+			Ayyo!!.. It seems what you're looking for is not in our server
 		</div>
-	</section>
-{:else}
-	<section class="px-4 md:px-12 lg:px-96">
-		<div class="flex flex-col items-center">
-			<img src="/404-custom.webp" alt="404 error" class="md:w-1/2" />
-			<div class="text-center text-gray-400">
-				Ayyo!!.. It seems what you're looking for is not in our server
-			</div>
-			<a class="mt-4 bg-blue-500 p-2 rounded-xl text-white" href="/">Go Back To Home</a>
-		</div>
-	</section>
-{/if}
+		<a class="mt-4 bg-blue-500 p-2 rounded-xl text-white" href="/">Go Back To Home</a>
+	</div>
+</section>
 
 <style>
 	@import 'https://cdn.quilljs.com/1.3.6/quill.snow.css';
