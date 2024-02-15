@@ -3,12 +3,18 @@
 	import { getBlogs } from './setters';
 
 	let blogs: any = [];
+	let fetching = false;
 
 	onMount(async () => {
-		const fetchedBlogs = await getBlogs();
-		console.log(fetchedBlogs);
-
-		blogs = fetchedBlogs;
+		try {
+			fetching = true;
+			const fetchedBlogs = await getBlogs();
+			blogs = fetchedBlogs;
+		} catch (error) {
+			console.log(error);
+		} finally {
+			fetching = false;
+		}
 	});
 </script>
 
@@ -28,13 +34,28 @@
 		<a href="/blog/createblog" class="bg-blue-500 p-1 rounded-lg text-white">Add New</a>
 	</div>
 
-	{#if blogs.length === 0}
+	{#if blogs.length === 0 && !fetching}
 		<div class="text-center flex items-center justify-center h-96">No Blogs Found</div>
 	{/if}
 
-	<div class="mt-4">
-		{#each blogs as item (item.id)}
-			<div>{item.title}</div>
-		{/each}
-	</div>
+	{#if fetching}
+		<div class="">Fetching Blogs...</div>
+	{:else}
+		<div class="mt-4 grid grid-cols-1 gap-2 md:grid-cols-2">
+			{#each blogs as item (item.id)}
+				<div class="bg-blue-200 p-2 rounded-lg">
+					<div class="font-bold">{item.title}</div>
+					<div class="text-sm text-gray-400">
+						Status:
+						{#if item.is_published}
+							Published
+						{:else if item.is_draft}
+							In Draft
+						{/if}
+						<div>Created Date: {item.created_at.slice(0, 10)}</div>
+					</div>
+				</div>
+			{/each}
+		</div>
+	{/if}
 </section>

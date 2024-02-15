@@ -8,10 +8,4 @@
 	{blogBody.title}
 </h1>
 <p class="text-gray-300 text-sm">Blog • {blogBody.createdDate}</p>
-<div class="mt-4 img-parent">{@html blogBody.previewContent}</div>
-
-<style>
-	.img-parent img {
-		border-radius: 1rem;
-	}
-</style>
+<div class="mt-4 mb-8">{@html blogBody.previewContent}</div>
