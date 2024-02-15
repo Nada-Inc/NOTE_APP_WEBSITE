@@ -142,7 +142,7 @@
 			return img.outerHTML;
 		}
 		// Return a default image if no image is found
-		// return '<img src="path/to/default/image.jpg" class="w-64 h-64 object-cover">';
+		return '<img src="./no_file.webp" class="h-32 object-contain">';
 	}
 </script>
 
@@ -527,13 +527,13 @@
 		</div>
 	</section>
 
-	<section class="mb-8">
-		<div class="font-bold mb-4">Blogs</div>
+	<section class="mb-8" id="blog">
+		<div class="font-bold mb-4 md:text-center md:text-3xl">Blogs</div>
 
 		<div class="slides">
 			{#each blogs as item (item.id)}
 				<a href={`/blog/${item.id}`} class="grid grid-cols-1 p-2 mr-2 bg-blue-200 cursor-pointer">
-					<div class="bg-white rounded-lg">
+					<div class="bg-white rounded-lg flex items-center justify-center">
 						{@html getFirstImage(item.content)}
 					</div>
 					<div class="text-sm mt-2">{item.title}</div>

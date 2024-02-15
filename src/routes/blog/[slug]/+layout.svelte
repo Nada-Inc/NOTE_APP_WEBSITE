@@ -4,7 +4,7 @@
 			<img src="/note-app-logo.svg" class="h-8" alt="Flowbite Logo" />
 		</a>
 
-		<a href="/">Go Back</a>
+		<a href="/#blog">Go Back</a>
 	</div>
 </nav>
 
