@@ -5,7 +5,7 @@
 	import { goto } from '$app/navigation';
 
 	import Preview from './Preview.svelte';
-	import { setBlogData } from '../setters';
+	import { setBlogData } from '../../../lib/setters';
 	import Toast from '../../../componets/Toast.svelte';
 	import { writable } from 'svelte/store';
 
@@ -18,6 +18,8 @@
 	let isLoading = false;
 	let toast = writable(null);
 	let titleError = false;
+	let isAdmin = false;
+	let admin = import.meta.env.VITE_NOTE_WEB_ADMIN;
 
 	export let toolbarOptions = [
 		[{ header: 1 }, { header: 2 }, 'blockquote', 'link', 'image'],
@@ -33,6 +35,12 @@
 
 		const { default: Quill } = await import('quill');
 
+		let userDetails = JSON.parse(localStorage.getItem('user') || '{}');
+
+		if (userDetails.userId === admin) {
+			isAdmin = true;
+		}
+
 		function imageHandler() {
 			let fileInput = this.container.querySelector('input.ql-image[type=file]');
 			if (fileInput == null) {
@@ -40,7 +48,8 @@
 				fileInput.setAttribute('type', 'file');
 				fileInput.setAttribute(
 					'accept',
-					'image/png, image/gif, image/jpeg, image/bmp, image/x-icon', 'image/webp'
+					'image/png, image/gif, image/jpeg, image/bmp, image/x-icon',
+					'image/webp'
 				);
 				fileInput.classList.add('ql-image');
 				fileInput.addEventListener('change', () => {
@@ -158,41 +167,53 @@
 	</div>
 {/if}
 
-<section class="px-4 md:px-12 lg:px-96">
-	{#if showPreview}
-		<Preview bind:blogBody />
-	{/if}
-	<div style={showPreview ? 'display:none;' : ''}>
-		<div class="w-full flex gap-1 justify-between">
-			<input
-				type="text"
-				placeholder="Add a Blog Title"
-				class="bg-gray-100 p-1 rounded-lg outline-none border-none w-1/2"
-				bind:value={title}
-				on:input={() => {
-					titleError = false;
-				}}
-			/>
-			<div>
-				<button class="bg-blue-500 text-white p-1 rounded-lg text-sm" on:click={preview}
-					>Preview</button
-				>
-				<button class="bg-blue-500 text-white p-1 rounded-lg text-sm">Draft</button>
-				<button class="bg-blue-500 text-white p-1 rounded-lg text-sm" on:click={publish}
-					>Publish</button
-				>
+{#if isAdmin}
+	<section class="px-4 md:px-12 lg:px-96">
+		{#if showPreview}
+			<Preview bind:blogBody />
+		{/if}
+		<div style={showPreview ? 'display:none;' : ''}>
+			<div class="w-full flex gap-1 justify-between">
+				<input
+					type="text"
+					placeholder="Add a Blog Title"
+					class="bg-gray-100 p-1 rounded-lg outline-none border-none w-1/2"
+					bind:value={title}
+					on:input={() => {
+						titleError = false;
+					}}
+				/>
+				<div>
+					<button class="bg-blue-500 text-white p-1 rounded-lg text-sm" on:click={preview}
+						>Preview</button
+					>
+					<button class="bg-blue-500 text-white p-1 rounded-lg text-sm">Draft</button>
+					<button class="bg-blue-500 text-white p-1 rounded-lg text-sm" on:click={publish}
+						>Publish</button
+					>
+				</div>
+			</div>
+
+			{#if titleError}
+				<span class="text-sm text-red-500">*Blog Title Is Missing</span>
+			{/if}
+
+			<div class="editor-wrapper h-[75vh] mt-2">
+				<div bind:this={editor} />
 			</div>
 		</div>
-
-		{#if titleError}
-			<span class="text-sm text-red-500">*Blog Title Is Missing</span>
-		{/if}
-
-		<div class="editor-wrapper h-[75vh] mt-2">
-			<div bind:this={editor} />
+	</section>
+{:else}
+	<section class="px-4 md:px-12 lg:px-96">
+		<div class="flex flex-col items-center">
+			<img src="/404-custom.webp" alt="404 error" class="md:w-1/2" />
+			<div class="text-center text-gray-400">
+				Ayyo!!.. It seems what you're looking for is not in our server
+			</div>
+			<a class="mt-4 bg-blue-500 p-2 rounded-xl text-white" href="/">Go Back To Home</a>
 		</div>
-	</div>
-</section>
+	</section>
+{/if}
 
 <style>
 	@import 'https://cdn.quilljs.com/1.3.6/quill.snow.css';

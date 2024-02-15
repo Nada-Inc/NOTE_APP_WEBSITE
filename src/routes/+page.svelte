@@ -6,7 +6,7 @@
 	import Toast from '../componets/Toast.svelte';
 	import { writable } from 'svelte/store';
 	import { supabase } from '$lib/supabase';
-	import { getBlogs } from './blog/setters';
+	import { getBlogs } from '../lib/setters';
 
 	let toast = writable(null);
 	let name = '';
