@@ -1,4 +1,4 @@
-import { supabase } from '../../lib/supabase';
+import { supabase } from './supabase';
 
 export const setBlogData = async (blogData) => {
 	try {
@@ -42,7 +42,7 @@ export const getBlogById = async (id) => {
 		let { data, error } = await supabase.from('tbl.blogs').select('*').eq('id', id).single();
 		if (error) {
 			console.error(error);
-			return { success: false, message: 'failed', error };
+			return data;
 		} else {
 			return data;
 		}
