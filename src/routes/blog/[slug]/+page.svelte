@@ -14,7 +14,6 @@
 		try {
 			fetching = true;
 			let blogById = await getBlogById(id);
-			console.log(blogById);
 			title = blogById.title;
 			created_at = blogById.created_at.slice(0, 10);
 			blog = blogById.content;
