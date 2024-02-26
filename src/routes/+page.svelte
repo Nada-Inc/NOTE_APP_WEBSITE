@@ -286,7 +286,7 @@
 	<!-- Hero Section -->
 	<section>
 		<div
-			class="bg-blue-200 p-4 rounded-xl h-[85vh] flex flex-col items-center justify-center md:flex-row"
+			class="bg-blue-200 p-4 rounded-xl h-[80vh] flex flex-col items-center justify-center md:flex-row"
 		>
 			<img src="/hero.webp" alt="hero img" class="md:w-1/3" />
 			<div
