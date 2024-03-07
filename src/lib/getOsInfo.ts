@@ -1,4 +1,6 @@
 export const getOSInfo = () => {
+	console.log(navigator);
+
 	const userAgent = navigator.userAgent;
 	if (userAgent.indexOf('Win') !== -1) {
 		return 'Windows';
