@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'protest': ['Protest Strike', 'sans-serif'],
+        'inria': ['Inria Serif', 'sans-serif'],
         'rubik': ['Rubik', 'sans-serif']
       }
     },
