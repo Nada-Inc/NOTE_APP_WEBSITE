@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../app.css';
 	import { onMount } from 'svelte';
 	import { getDownloadLink } from '../lib/getDownloadUrl';
 	import { getOSInfo } from '../lib/getOsInfo';
@@ -29,9 +30,12 @@
 
 <main>
 	<section class="p-4 font-inria h-screen lg:px-40 lg:py-14">
-		<div class="text-xl flex justify-between">
+		<div class="text-xl flex justify-between py-4">
 			<div>Note App</div>
 			<div class="flex gap-4">
+				<button>
+					<img src="/images/brightness.png" alt="" class="w-5" />
+				</button>
 				<a href="https://github.com/Nada-Inc/NOTE-APP-MONO-REPO"
 					><div class="hidden lg:block">Source Code</div></a
 				>
