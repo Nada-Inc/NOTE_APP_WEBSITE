@@ -1,7 +1,7 @@
 <main>
 	<section class="p-4 font-inria lg:px-40 lg:py-14">
 		<div class="text-xl flex justify-between">
-			<div>Note App</div>
+			<a href="/"><div>Note App</div></a>
 			<div class="flex gap-4">
 				<a href="https://github.com/Nada-Inc/NOTE-APP-MONO-REPO"
 					><div class="hidden lg:block">Source Code</div></a
