@@ -35,7 +35,7 @@ export const getDownloadLink = (os: string | undefined) => {
 	if (os === 'Windows') {
 		downloadFile('windows');
 		return true;
-	} else if (os === 'Android') {
+	} else if (os === 'Android' | os === 'Linux') {
 		downloadFile('android');
 		return true;
 	} else {
