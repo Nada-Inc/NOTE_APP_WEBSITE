@@ -3,7 +3,7 @@ export const getOSInfo = () => {
 	if (userAgent.indexOf('Win') !== -1) {
 		return 'Windows';
 	} else if (userAgent.indexOf('Mac') !== -1) {
-		return 'macOS';
+		return 'macOS/iOS';
 	} else if (userAgent.indexOf('Linux') !== -1) {
 		return 'Linux';
 	} else if (userAgent.indexOf('Android') !== -1) {
