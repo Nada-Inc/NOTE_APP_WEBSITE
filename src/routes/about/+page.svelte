@@ -93,7 +93,11 @@
 				</div>
 			</div>
 			<div class="hidden lg:block">
-				<img src="/images/designer-working.svg" alt="hero section" class="w-96" />
+				<img
+					src={isDark ? '/images/designer-working-dark.svg' : '/images/designer-working.svg'}
+					alt="hero section"
+					class="w-96"
+				/>
 			</div>
 		</div>
 	</section>
