@@ -23,7 +23,7 @@
 				<a href="https://github.com/Nada-Inc/NOTE-APP-MONO-REPO"
 					><div class="hidden lg:block">Source Code</div></a
 				>
-				<a href="/about"><div>About</div></a>
+				<a href="/"><div>Go Back</div></a>
 			</div>
 		</div>
 
