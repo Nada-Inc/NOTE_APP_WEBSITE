@@ -9,6 +9,9 @@ export default {
       },
       backgroundImage: {
         'light': "url('/images/brightness.png')",
+      },
+      colors: {
+        'main': "#F3F3F3"
       }
     },
   },

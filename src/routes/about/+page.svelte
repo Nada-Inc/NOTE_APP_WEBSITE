@@ -1,10 +1,23 @@
-<script>
-	import '../../app.css';
+<script lang="ts">
+	import { onMount } from 'svelte';
+
+	let isDark = false;
+
+	onMount(() => {
+		const isDarkLocal = localStorage.getItem('isDark');
+		if (isDarkLocal === null) {
+			localStorage.setItem('isDark', 'false');
+		} else {
+			isDark = JSON.parse(isDarkLocal);
+		}
+	});
 </script>
 
-<main>
+<main class={isDark ? 'bg-black text-white' : 'bg-main'}>
 	<section class="p-4 font-inria lg:px-40 lg:py-14">
-		<div class="text-xl flex justify-between sticky top-0 bg-white py-4">
+		<div
+			class={`text-xl flex justify-between sticky top-0 py-4 ${isDark ? 'bg-black' : 'bg-main'}`}
+		>
 			<a href="/"><div>Note App</div></a>
 			<div class="flex gap-4">
 				<a href="https://github.com/Nada-Inc/NOTE-APP-MONO-REPO"
@@ -17,7 +30,11 @@
 		<div class="grid lg:grid-cols-2 mt-20">
 			<div class="w-full h-full flex justify-center items-start flex-col">
 				<div class="lg:hidden">
-					<img src="/images/designer-working.svg" alt="hero section" class="w-full" />
+					<img
+						src={isDark ? '/images/designer-working-dark.svg' : '/images/designer-working.svg'}
+						alt="hero section"
+						class="w-full"
+					/>
 				</div>
 				<div class="text-xl">Learn How We Built Note App</div>
 				<div class="text-5xl">With Our Favorite Stack <br />For Hybrid Apps</div>
@@ -63,9 +80,15 @@
 
 					<div class="mt-8 flex gap-4">
 						<div>
-							Learn more about React Native <span class="underline decoration-dashed">Here</span>
+							Learn more about React Native <a href="https://reactnative.dev/" target="_blank"
+								><span class="underline decoration-dashed">Here</span></a
+							>
 						</div>
-						<div>Learn more about Tauri <span class="underline decoration-dashed">Here</span></div>
+						<div>
+							Learn more about Tauri <a href="https://tauri.app/" target="_blank"
+								><span class="underline decoration-dashed">Here</span></a
+							>
+						</div>
 					</div>
 				</div>
 			</div>
