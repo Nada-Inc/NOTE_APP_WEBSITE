@@ -83,6 +83,7 @@
 						getDownloadLinkCheck();
 					}}>Download Now</button
 				>
+
 				{#if isDownload !== undefined}
 					{#if isDownload}
 						<div class="mt-4">
@@ -93,6 +94,8 @@
 							Not Available For <span class="underline decoration-dashed">{os}</span>
 						</div>
 					{/if}
+				{:else}
+					<div class="text-sm mt-4">Available For Windows and Android</div>
 				{/if}
 			</div>
 			<div class="hidden lg:block">
