@@ -78,7 +78,7 @@
 				<div class="text-xl">Notes Unleashed</div>
 				<div class="text-5xl">Your All-in-One <br />Note-Taking Companion</div>
 				<button
-					class={`${isDark ? 'bg-main text-black' : 'bg-black'} text-white rounded-full p-2 mt-4`}
+					class={`${isDark ? 'bg-main text-black' : 'bg-black text-white'} rounded-full p-2 mt-4`}
 					on:click={() => {
 						getDownloadLinkCheck();
 					}}>Download Now</button
