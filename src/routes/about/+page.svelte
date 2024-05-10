@@ -54,7 +54,7 @@
 
 					<p class="mt-4">
 						At Nada Labs, we use Rust (Tauri), React, and React Native to create hybrid
-						applications.Using React Native and Tauri to build hybrid applications combines the
+						applications. Using React Native and Tauri to build hybrid applications combines the
 						finest features of both technologies: Tauri's native desktop application packaging and
 						React Native's UI efficiency and performance.
 					</p>
@@ -62,10 +62,10 @@
 					<p class="mt-4">
 						You can create a single codebase with React Native that works on both iOS and Android,
 						sharing a large amount of your code between the two platforms. However, Tauri enables
-						you to package your React Native application as a stand-alone desktop programme, giving
+						you to package your React Native application as a stand-alone desktop program, giving
 						you access toto more seamless user experiences and native system functionalities. To get
 						started, you would normally use React Native to design your application and make sure it
-						functions properly on mobile platforms. When your programme is prepared, you can package
+						functions properly on mobile platforms. When your program is prepared, you can package
 						it as a desktop application by integrating Tauri. Tauri offers settings and features to
 						let you to personalise the packaging process to suit your requirements. Some of these
 						include customising app icons, managing updates, and handling permissions.
