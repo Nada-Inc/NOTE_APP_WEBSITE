@@ -21,7 +21,7 @@
 			<a href="/"><div>Note App</div></a>
 			<div class="flex gap-4">
 				<a href="https://github.com/Nada-Inc/NOTE-APP-MONO-REPO"
-					><div class="hidden lg:block">Source Code</div></a
+					><div class="">Code</div></a
 				>
 				<a href="/"><div>Go Back</div></a>
 			</div>
