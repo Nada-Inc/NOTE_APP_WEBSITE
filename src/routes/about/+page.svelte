@@ -20,9 +20,7 @@
 		>
 			<a href="/"><div>Note App</div></a>
 			<div class="flex gap-4">
-				<a href="https://github.com/Nada-Inc/NOTE-APP-MONO-REPO"
-					><div class="hidden lg:block">Source Code</div></a
-				>
+				<a href="https://github.com/Nada-Inc/NOTE-APP-MONO-REPO"><div class="">Code</div></a>
 				<a href="/"><div>Go Back</div></a>
 			</div>
 		</div>
@@ -43,39 +41,41 @@
 				</div>
 				<div class="mt-4">
 					<p>
-						<span class="text-4xl">H</span>ybrid apps have become increasingly popular due to their
-						ability to streamline development processes and reduce costs. They offer a compelling
-						alternative to native development, particularly for applications that do not require
-						highly specialized native features or performance optimization. Hybrid apps leverage the
-						strengths of both native and web development. They can access native device features and
-						APIs, providing a level of performance and functionality similar to that of native apps.
-						At the same time, they benefit from the flexibility and ease of development associated
-						with web technologies, allowing for rapid prototyping and cross-platform compatibility.
+						<span class="text-4xl">B</span>ecause hybrid apps may cut costs and streamline
+						development processes easier, they are becoming more and more common in software
+						development. They present a strong substitute for native development (even though native
+						apps have it's own advantages), especially for applications that don't need speed
+						optimisation or highly specialised native capabilities. Web and native development
+						strengths are combined in hybrid applications development. They function and execute
+						similarly to native apps because they have access to native device capabilities and
+						APIs.Simultaneously, they gain from web technologies' flexibility and ease of
+						development, which enable quick prototyping and cross-platform interoperability.
 					</p>
 
 					<p class="mt-4">
-						At Nada Labs We Use React, React Native, and Rust (Tauri) for Building Hybrid Apps.
-						Building hybrid applications with React Native and Tauri combines the best of both
-						worlds: the efficiency and performance of React Native for the UI and Tauri for the
-						native desktop application packaging.
+						At Nada Labs, we use Rust (Tauri), React, and React Native to create hybrid
+						applications. Using React Native and Tauri to build hybrid applications combines the
+						finest features of both technologies: Tauri's native desktop application packaging and
+						React Native's UI efficiency and performance.
 					</p>
 
 					<p class="mt-4">
-						With React Native, you can develop a single codebase for both Android and iOS, sharing a
-						significant portion of your code across platforms. Tauri, on the other hand, allows you
-						to package your React Native app as a standalone desktop application, providing access
-						to native system functionalities and a more seamless user experience. To get started,
-						you would typically develop your application using React Native, ensuring it works
-						correctly on mobile platforms. Once your app is ready, you can integrate Tauri to
-						package it as a desktop application. Tauri provides tools and configurations to
-						customize the packaging process according to your needs, such as setting up app icons,
-						handling permissions, and managing updates.
+						You can create a single codebase with React Native that works on both iOS and Android,
+						sharing a large amount of your code between the two platforms. However, Tauri enables
+						you to package your React Native application as a stand-alone desktop program, giving
+						you access toto more seamless user experiences and native system functionalities. To get
+						started, you would normally use React Native to design your application and make sure it
+						functions properly on mobile platforms. When your program is prepared, you can package
+						it as a desktop application by integrating Tauri. Tauri offers settings and features to
+						let you to personalise the packaging process to suit your requirements. Some of these
+						include customising app icons, managing updates, and handling permissions.
 					</p>
 
 					<p class="mt-4">
-						By leveraging both React Native and Tauri, you can create powerful hybrid applications
-						that offer the flexibility of web technologies and the native capabilities of desktop
-						applications.
+						You may build strong hybrid applications with the freedom of web technologies and the
+						native capabilities of desktop applications by utilising both React Native and Tauri
+						which will make this stack a perfect choice and end of the day it's all depends on the
+						needs of each project.
 					</p>
 
 					<div class="mt-8 flex gap-4">
